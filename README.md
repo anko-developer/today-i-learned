@@ -1,9 +1,10 @@
-# Vue.js 완벽 가이드
+# Today I Learned
 
-## 목차
+## 주요 페이지
 
-- Router
-- Axios
-- Store
-
-![ex_screenshot](./vue-news/src/assets/map.png)
+- Sign up
+- Sign in
+- Created
+- Read
+- Update
+- Delete
