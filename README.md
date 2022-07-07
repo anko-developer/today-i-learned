@@ -1,5 +1,11 @@
 # today-i-learned
 
+## Node Version
+```
+v10.16.3 (check!)
+v14.19.1
+```
+
 ## Project setup
 ```
 npm install
