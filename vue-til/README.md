@@ -1,5 +1,10 @@
 # vue-til
 
+## Node Version
+```
+v14.19.1
+```
+
 ## Project setup
 ```
 npm install
