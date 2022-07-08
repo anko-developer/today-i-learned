@@ -3,18 +3,25 @@
     <div class="form-wrapper form-wrapper-sm">
       <form @submit.prevent="submitForm" class="form">
         <div>
-          <label for="username">id: </label>
+          <label for="username">id:</label>
           <input id="username" type="text" v-model="username" />
+          <p class="validation-text">
+            <span class="warning" v-if="!isUsernameValid && username">
+              Please enter an email address
+            </span>
+          </p>
         </div>
         <div>
-          <label for="password">pw: </label>
+          <label for="password">pw:</label>
           <input id="password" type="text" v-model="password" />
         </div>
-        <div>
-          <label for="nickname">nickname: </label>
-          <input id="nickname" type="text" v-model="nickname" />
-        </div>
-        <button type="submit" class="btn">회원 가입</button>
+        <button
+          :disabled="!isUsernameValid || !password"
+          type="submit"
+          class="btn"
+        >
+          로그인
+        </button>
       </form>
       <p class="log">{{ logMessage }}</p>
     </div>
@@ -22,7 +29,7 @@
 </template>
 
 <script>
-import { registerUser } from '@/api/index';
+import { loginUser } from '@/api/index';
 import { validateEmail } from '@/utils/validation';
 
 export default {
@@ -31,7 +38,6 @@ export default {
       // form values
       username: '',
       password: '',
-      nickname: '',
       // log
       logMessage: '',
     };
@@ -44,17 +50,20 @@ export default {
   methods: {
     async submitForm() {
       try {
+        // 비즈니스 로직
         const userData = {
           username: this.username,
           password: this.password,
-          nickname: this.nickname,
         };
-        const { data } = await registerUser(userData);
-        this.logMessage = `${data.username}님이 가입되었습니다.`;
+        const { data } = await loginUser(userData);
+        console.log(data.user.username);
+        this.logMessage = `${data.user.username} 님 환영합니다`;
         // this.initForm();
       } catch (error) {
-        // this.logMessage = error.response.data;
-        console.log(error);
+        // 에러 핸들링할 코드
+        console.log(error.response.data);
+        this.logMessage = error.response.data;
+        // this.initForm();
       } finally {
         this.initForm();
       }
@@ -62,10 +71,13 @@ export default {
     initForm() {
       this.username = '';
       this.password = '';
-      this.nickname = '';
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+.btn {
+  color: white;
+}
+</style>

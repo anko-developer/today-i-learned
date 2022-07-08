@@ -1,9 +1,18 @@
 <template>
-  <div>Login</div>
+  <div>
+    <h1>로그인 페이지</h1>
+    <LoginForm></LoginForm>
+  </div>
 </template>
 
 <script>
-export default {};
+import LoginForm from '@/components/LoginForm';
+
+export default {
+  components: {
+    LoginForm,
+  },
+};
 </script>
 
 <style></style>
