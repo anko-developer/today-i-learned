@@ -2,8 +2,8 @@
 
 ## Node Version
 ```
-v10.16.3 (check!)
-v14.19.1
+v10.16.3 (vue-til-server)
+v14.19.1 (vue-til)
 ```
 
 ## Project setup
