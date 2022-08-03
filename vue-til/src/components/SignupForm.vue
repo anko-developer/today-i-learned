@@ -51,7 +51,6 @@ export default {
         };
         const { data } = await registerUser(userData);
         this.logMessage = `${data.username}님이 가입되었습니다.`;
-        // this.initForm();
       } catch (error) {
         // this.logMessage = error.response.data;
         console.log(error);
