@@ -42,6 +42,7 @@ export default {
       logMessage: '',
     };
   },
+  // computed: data 변화에 따라 자동으로 계산해주는 연산식
   computed: {
     isUsernameValid() {
       return validateEmail(this.username);
@@ -56,7 +57,7 @@ export default {
           password: this.password,
         };
         const { data } = await loginUser(userData);
-        console.log(data.user.username);
+        // console.log(data.user.username);
         this.logMessage = `${data.user.username} 님 환영합니다`;
         // this.initForm();
       } catch (error) {
