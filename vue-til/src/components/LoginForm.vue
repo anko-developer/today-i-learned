@@ -57,9 +57,9 @@ export default {
           password: this.password,
         };
         const { data } = await loginUser(userData);
-        // console.log(data.user.username);
-        this.logMessage = `${data.user.username} 님 환영합니다`;
-        // this.initForm();
+        this.$store.commit('setToken', data.token);
+        this.$store.commit('setUsername', data.user.username); // store에 username 값을 전달
+        this.$router.push('/main'); // main page로 이동
       } catch (error) {
         // 에러 핸들링할 코드
         console.log(error.response.data);
